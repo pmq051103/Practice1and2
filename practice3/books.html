@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sách</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Quản lý sách</h2>
+        <br><br>
+        <input type="text" id="title" placeholder="Tiêu đề sách">
+        <input type="text" id="author" placeholder="Tác giả">
+        <input type="number" id="year" placeholder="Năm xuất bản">
+        <button onclick="addBook()">Thêm sách</button>
+
+        <ul id="bookList"></ul>
+    </div>
+
+    <script src="books.js"></script>
+</body>
+</html>
