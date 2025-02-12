@@ -21,7 +21,9 @@ function addBook() {
         return;
     }
 
-    let newBook = { title, author, year };
+    let randomId = Math.floor(100 + Math.random() * 900);
+    let id = randomId.toString();
+    let newBook = { id, title, author, year };
 
     fetch("http://localhost:3000/books", {
         method: "POST",
