@@ -6,13 +6,12 @@ async function addTask() {
     let taskText = taskInput.value.trim();
     if (taskText === "") return;
 
-    let randomId = Math.floor(100 + Math.random() * 900);
-    let idString = randomId.toString();
+    let id = crypto.randomUUID();
 
     await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: idString, text: taskText, completed: false })
+        body: JSON.stringify({ id: id, text: taskText, completed: false })
     });
 
     taskInput.value = "";
