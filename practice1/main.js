@@ -13,7 +13,6 @@ async function addTask() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: id, text: taskText, completed: false })
     });
-
     taskInput.value = "";
     loadTasks();
 }
