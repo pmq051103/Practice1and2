@@ -9,8 +9,12 @@ function checkLogin() {
     }
 }
 
-
-
+function logout(){
+    if(localStorage.getItem("loggedIn")){
+        localStorage.setItem("loggedIn","false");
+        window.location.href = "index.html";
+    }
+}
 function addBook() {
     let title = document.getElementById("title").value.trim();
     let author = document.getElementById("author").value.trim();
@@ -21,8 +25,7 @@ function addBook() {
         return;
     }
 
-    let randomId = Math.floor(100 + Math.random() * 900);
-    let id = randomId.toString();
+    let id = crypto.randomUUID(); 
     let newBook = { id, title, author, year };
 
     fetch("http://localhost:3000/books", {
@@ -50,13 +53,12 @@ function loadBooks() {
         books.forEach(book => {
             let li = document.createElement("li");
             li.innerHTML = `${book.title} - ${book.author} (${book.year}) 
-                <button onclick="deleteBook(${book.id})">Xóa</button>`;
+                <button onclick="deleteBook('${book.id}')">Xóa</button>`;
             bookList.appendChild(li);
         });
     })
     .catch(error => console.error("Lỗi:", error));
 }
-
 
 function deleteBook(bookId) {
     fetch(`http://localhost:3000/books/${bookId}`, {
